@@ -1,0 +1,8 @@
+#  inactivo(No lo activen hasta terminar)
+
+# services:
+#   - type: web
+#     name: simulador-sucesiones
+#     env: python
+#     buildCommand: pip install -r requirements.txt
+#     startCommand: gunicorn app:app
