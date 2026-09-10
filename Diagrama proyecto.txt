@@ -1,0 +1,65 @@
+RESUMEN INTEGRAL DEL PROYECTO
+El proyecto consiste en el desarrollo de un sistema web integral enfocado en el Tema 04: Sucesiones Recursivas de la asignatura de Matemática Discreta, aplicado al modelado y proyección de la demanda semanal de infraestructura para un servicio en la nube (Cloud Capacity Planning). La herramienta permite parametrizar relaciones de recurrencia de orden 1, 2 y 3 (nivel reto), solicitando las condiciones iniciales y coeficientes correspondientes para generar los primeros n términos de la sucesión. Computacionalmente, el núcleo matemático obtiene de manera automática la función explícita cerrada mediante el método de la ecuación característica (resolviendo raíces reales distintas, de multiplicidad o complejas conjugadas) y resuelve sistemas de ecuaciones lineales para hallar las constantes asociadas.
+
+La arquitectura del backend se sustenta en Python con el microframework Flask, elegido por su capacidad analítica y precisión simbólica y numérica mediante librerías como SymPy y NumPy. Para garantizar un diseño desacoplado, la lógica de negocio se divide en módulos especializados: un motor de cálculo analítico y recursivo, un módulo de benchmarking que ejecuta múltiples repeticiones para medir con alta resolución la latencia de cómputo entre ambos métodos, y un validador formal que comprueba término a término la igualdad de los resultados. Dado que el sistema opera como un simulador autónomo, no depende de APIs de terceros ni de credenciales de proveedores en la nube; en su lugar, incorpora un generador de telemetría sintética capaz de producir coeficientes aleatorios coherentes y simular perturbaciones de tráfico de forma 100% local.
+
+El frontend está desarrollado con HTML5, CSS3 modular y JavaScript, estructurado visualmente para emular una consola operativa real de monitoreo en la nube (CloudOps Dashboard). La interfaz integra tarjetas de métricas teóricas (consumo estimado de vCPU, memoria RAM y alertas de saturación), un panel de control con opciones para cargar escenarios aleatorios y un contenedor gráfico interactivo gestionado por Chart.js. Este último renderiza en un mismo plano cartesiano la curva de la sucesión recursiva superpuesta a la función explícita, incorporando una línea de umbral máximo de capacidad para verificar la concordancia matemática y evaluar si la demanda colapsa o se mantiene estable.
+
+Para cumplir de forma estricta con la rúbrica de evaluación (3,0 puntos en Implementación del Proyecto y resultados), la estructura contempla los tres requisitos exigidos:
+
+1.Algoritmo y tutorial: Documentación técnica formal que incluye el diagrama de flujo o seudocódigo en la carpeta de documentación, complementado con una interfaz de bienvenida tipo dashboard que expone la teoría matemática.
+
+2.Resultados correctos: Verificación algorítmica estricta que certifica la coincidencia exacta de ambos métodos de cálculo.
+
+3.Interpretación adecuada: Un motor de diagnóstico contextual (interpreter.py) que traduce las propiedades matemáticas de las raíces (convergencia, divergencia exponencial o comportamiento oscilatorio) en recomendaciones técnicas de escalado y estabilidad de servidores.
+
+Por último, el proyecto incorpora scripts de automatización (run.bat / run.sh) para permitir el despliegue del servidor y la apertura del navegador mediante un solo clic, satisfaciendo el requerimiento de entregar tanto el código fuente como el ejecutable funcional.
+
+DIAGRAMA DE ARBOL DEL PROYECTO
+
+
+proyecto_sucesiones/
+|
+|_____.gitignore                        [Ignorados Git]: Excluye archivos temporales y el entorno virtual del repositorio de código.
+|_____venv/                             [Entorno Virtual]: Directorio auto-generado donde se instalan las librerías locales (no se sube a control de versiones).
+|_____run.bat / run.sh                  [Lanzador 1-click]: Script ejecutable que inicializa el entorno local, arranca app.py y abre el navegador automáticamente
+|_____render.yaml                       [Deploy Cloud]: Configuración (inactiva) para publicar el servidor automáticamente en internet vía Render.
+|_____app.py                            [Servidor Flask local]: Enrutador central que expone los endpoints internos para la simulación, benchmarks y diagnósticos
+|_____requirements.txt                  [Dependencias backend]: Especificación de librerías locales de Python (Flask, SymPy, NumPy).
+|_____README.md                         [Manual del proyecto]: Documentación técnica sobre la instalación, ejecución fuera de línea y fundamentación matemática
+|
+|_____docs/                             [DOCUMENTACIÓN FORMAL DE RÚBRICA]:
+|     |_____algoritmo_flujo.pdf         [Algoritmo]: Diagrama de flujo formal y seudocódigo de la resolución recursiva y deducción explícita.
+|     |_____tutorial_usuario.pdf        [Manual de Operaciones]: Guía técnica ilustrada paso a paso para el operador del simulador.
+|
+|_____backend/                          [LÓGICA MATEMÁTICA Y GENERADOR SINTÉTICO]:
+|     |_______init__.py                 [Paquete Python]: Archivo de inicialización para que la carpeta sea reconocida como un módulo por Flask.
+|     |_____recurrence_solver.py        [Motor matemático]: Genera la sucesión recursiva, resuelve la ecuación característica (órdenes 1 a 3) y deduce la fórmula cerrada
+|     |_____telemetry_generator.py      [Simulador sintético]: Genera coeficientes aleatorios coherentes, condiciones iniciales y variaciones teóricas sin usar APIs externas
+|     |_____benchmark.py                [Módulo de rendimiento]: Mide con alta precisión temporal las repeticiones del cálculo del término n-ésimo (recursivo vs explícito)
+|     |_____validator.py                [Validación analítica]: Comprueba término a término que la recursión y la función cerrada produzcan valores idénticos
+|     |_____interpreter.py              [Diagnóstico de CloudOps]: Interpreta el comportamiento de las raíces (estabilidad, divergencia exponencial o saturación de capacidad)
+|
+|_____templates/                        [VISTAS FRONTEND - CONSOLA DE MONITOREO]:
+|     |_____index.html                  [Dashboard principal]: Estructura general de la consola de operaciones de infraestructura en la nube[cite: 1].
+|     |_____components/                 [Módulos HTML reutilizables]:
+|           |_____metrics_cards.html    [Telemetría teórica]: Tarjetas con indicadores de vCPU, memoria proyectada y estado de alerta del clúster.
+|           |_____control_panel.html    [Panel de control]: Formulario de selección de orden (1, 2, 3), inputs numéricos y botón de "Generar escenario aleatorio"
+|           |_____charts_panel.html     [Área de gráficos]: Lienzo (<canvas>) para la visualización del plano cartesiano y umbral de capacidad[cite: 1].
+|           |_____benchmark_card.html   [Panel de latencia]: Comparativa visual de microsegundos de procesamiento entre ambos enfoques[cite: 1].
+|           |_____tutorial_dashboard.html [Tutorial interactivo]: Interfaz tipo dashboard (página separada) que explica la teoría y guía al usuario.
+|
+|_____static/                           [RECURSOS ESTÁTICOS CLIENTE]:
+      |_____css/
+      |     |_____dashboard.css         [Estilos base]: Maquetación de la consola estilo Cloud Operations (modo oscuro, rejillas y tipografía).
+      |     |_____components.css        [Estilos modulares]: Reglas visuales para botones de acción, tarjetas de KPIs y estados de alerta (verde/amarillo/rojo).
+      |
+      |_____js/
+      |     |_____simulation_engine.js  [Controlador cliente]: Gestiona la lógica de interfaz, captura eventos, solicita simulaciones y actualiza métricas.
+      |     |_____chart_renderer.js     [Renderizador Chart.js]: Dibuja el plano cartesiano, superpone la curva recursiva con la explícita y traza el umbral límite
+      |     |_____tutorial.js           [Lógica del tutorial]: Controla el despliegue secuencial y la navegación interactiva de la guía de usuario.
+      |
+      |_____img/
+            |_____cloud_brand.svg       [Identidad visual]: Isotipo ficticio de la plataforma de infraestructura cloud simulada[cite: 1].
+
+```
