@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudOps Dashboard - Simulador de Sucesiones</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #1e1e1e; color: #ffffff; padding: 20px; }
+        .card { background-color: #2d2d2d; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #0078d4; }
+        h1 { color: #0078d4; }
+    </style>
+</head>
+<body>
+    <h1>☁️ CloudOps Dashboard</h1>
+    
+    <div class="card">
+        <h2>Panel de Control </h2>
+        <p>El servidor Flask está conectado correctamente con la interfaz HTML.</p>
+        <button onclick="checkStatus()">Probar conexión con el Motor Matemático</button>
+        <p id="status-result" style="color: #4caf50; font-weight: bold; margin-top: 10px;"></p>
+    </div>
+
+    <script>
+        function checkStatus() {
+            fetch('/api/status')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status-result').innerText = "✅ " + data.message;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
