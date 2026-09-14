@@ -1,26 +1,16 @@
-# pyrefly: ignore [missing-import] (esto es porque no tengo las librerias instaladas)
-from flask import Flask, jsonify
+from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return jsonify({"status": "success", "message": "API de Simulación Activa - Frontend en construcción"})
+    return render_template('index.html')
 
-@app.route('/api/simulate', methods=['POST'])
-def simulate():
+@app.route('/api/status')
+def status():
     return jsonify({
-        "status": "success",
-        "data": {
-            "recursive_terms": [],
-            "explicit_terms": [],
-            "formula": "a_n = C1*r1^n",
-            "benchmark": {
-                "recursive_us": 0.0,
-                "explicit_us": 0.0
-            },
-            "diagnosis": "Estable"
-        }
+        "status": "online",
+        "message": "Servidor CloudOps y Motor Matemático iniciados"
     })
 
 if __name__ == '__main__':
