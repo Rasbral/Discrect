@@ -4,31 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CloudOps Dashboard - Simulador de Sucesiones</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #1e1e1e; color: #ffffff; padding: 20px; }
-        .card { background-color: #2d2d2d; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #0078d4; }
-        h1 { color: #0078d4; }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <!-- Librería para renderizar los gráficos del plano cartesiano -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>☁️ CloudOps Dashboard</h1>
-    
-    <div class="card">
-        <h2>Panel de Control </h2>
-        <p>El servidor Flask está conectado correctamente con la interfaz HTML.</p>
-        <button onclick="checkStatus()">Probar conexión con el Motor Matemático</button>
-        <p id="status-result" style="color: #4caf50; font-weight: bold; margin-top: 10px;"></p>
-    </div>
+    <header class="topbar">
+        <div class="topbar__brand">
+            <div>
+                <h1 class="topbar__title">☁️ CloudOps Dashboard</h1>
+                <p class="topbar__subtitle">Capacity Planning mediante Sucesiones Recursivas</p>
+            </div>
+        </div>
+        <div class="topbar__actions">
+            <div id="engine-status" class="status-pill status-pill--error">Conectando...</div>
+            <a href="/tutorial" style="color: var(--accent-blue); text-decoration: underline;">Ver Teoría</a>
+        </div>
+    </header>
 
-    <script>
-        function checkStatus() {
-            fetch('/api/status')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('status-result').innerText = "✅ " + data.message;
-                })
-                .catch(error => console.error('Error:', error));
-        }
-    </script>
+    <main class="dashboard-grid">
+        <!-- Panel Izquierdo: Controles -->
+        <aside class="panel">
+            {% include 'components/control_panel.html' %}
+        </aside>
+        
+        <!-- Centro: Tarjetas de Métricas y Gráficos -->
+        <section class="panel--main">
+            {% include 'components/metrics_cards.html' %}
+            {% include 'components/charts_panel.html' %}
+        </section>
+        
+        <!-- Panel Derecho: Benchmarking -->
+        <aside class="panel">
+            {% include 'components/benchmark_card.html' %}
+        </aside>
+    </main>
+
+    <footer class="app-footer">
+        <p>Motor Matemático: SymPy | Backend: Flask </p>
+    </footer>
+
+    <div id="toast-container" style="position: fixed; bottom: 20px; right: 20px; color: yellow;"></div>
+
+    <script src="{{ url_for('static', filename='js/chart_renderer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/simulation_engine.js') }}"></script>
 </body>
 </html>
