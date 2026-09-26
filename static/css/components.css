@@ -1,0 +1,463 @@
+.btn {
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-panel-alt);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: transform 0.06s ease, filter 0.15s ease;
+}
+
+.btn:hover {
+    filter: brightness(1.15);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn--block {
+    width: 100%;
+}
+
+.btn--primary {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-dark));
+    border-color: transparent;
+    color: #fff;
+}
+
+.btn--accent {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-color: transparent;
+    color: #fff;
+}
+
+.btn--secondary {
+    background: var(--bg-panel-alt);
+}
+
+.btn--ghost {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+}
+
+.btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    filter: none;
+}
+
+/* ---------- Status pill (conexión con el motor) ---------- */
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: var(--bg-panel-alt);
+    border: 1px solid var(--border-subtle);
+}
+
+.status-pill__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-secondary);
+}
+
+.status-pill--pending .status-pill__dot {
+    background: var(--accent-warning);
+    animation: pulse 1.2s infinite ease-in-out;
+}
+
+.status-pill--online .status-pill__dot {
+    background: var(--accent-success);
+}
+
+.status-pill--error .status-pill__dot {
+    background: var(--accent-danger);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+/* ---------- Formularios ---------- */
+
+.field-group {
+    margin-bottom: 14px;
+}
+
+.field-group--split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-panel-alt);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-family: inherit;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+}
+
+.input-row {
+    display: flex;
+    gap: 8px;
+}
+
+.input-row select {
+    flex: 1;
+}
+
+.dynamic-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 16px 0;
+}
+
+.advanced-options summary {
+    cursor: pointer;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.error-text {
+    color: var(--accent-danger);
+    font-size: 0.78rem;
+    margin-top: 8px;
+}
+
+/* ---------- Tarjetas de métricas (KPI) ---------- */
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.metric-card {
+    background: var(--bg-panel-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 14px;
+}
+
+.metric-card__header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.metric-card__icon {
+    font-size: 0.95rem;
+}
+
+.metric-card__label {
+    font-size: 0.68rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-weight: 700;
+}
+
+.metric-card__value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.metric-card__hint {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+}
+
+/* ---------- Badges (alert level) ---------- */
+
+.badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--bg-panel);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+}
+
+.badge--info { color: #93c5fd; border-color: #1d4ed8; background: rgba(59, 130, 246, 0.12); }
+.badge--success { color: #6ee7b7; border-color: #047857; background: rgba(16, 185, 129, 0.12); }
+.badge--warning { color: #fcd34d; border-color: #b45309; background: rgba(245, 158, 11, 0.12); }
+.badge--danger { color: #fca5a5; border-color: #b91c1c; background: rgba(239, 68, 68, 0.12); }
+
+/* ---------- Progress bar (health score) ---------- */
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--bg-panel);
+    overflow: hidden;
+}
+
+.progress-bar__fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-danger), var(--accent-warning), var(--accent-success));
+    transition: width 0.4s ease;
+}
+
+/* ---------- Chart legend ---------- */
+
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.legend-dot--recursive { background: #3b82f6; }
+.legend-dot--explicit { background: #10b981; }
+.legend-dot--telemetry { background: #f59e0b; }
+.legend-dot--threshold { background: #ef4444; }
+
+/* ---------- Tablas ---------- */
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+}
+
+.data-table th, .data-table td {
+    padding: 7px 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.data-table th {
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 0.03em;
+}
+
+.data-table--compact td, .data-table--compact th {
+    padding: 6px;
+}
+
+/* ---------- Math panel ---------- */
+
+.math-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.math-summary__item--wide {
+    grid-column: 1 / -1;
+}
+
+.math-summary__label {
+    display: block;
+    font-size: 0.68rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.math-summary__value {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.math-summary__value--formula {
+    font-family: "Cascadia Code", Consolas, monospace;
+    font-size: 0.85rem;
+    color: #93c5fd;
+    word-break: break-word;
+}
+
+.math-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 700px) {
+    .math-columns, .math-summary { grid-template-columns: 1fr; }
+}
+
+.math-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.steps-list {
+    padding-left: 20px;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    font-family: "Cascadia Code", Consolas, monospace;
+}
+
+/* ---------- Benchmark ---------- */
+
+.bench-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.bench-bar-row__label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+}
+
+.bench-bar-track {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--bg-panel);
+    overflow: hidden;
+}
+
+.bench-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+.bench-bar-fill--recursive { background: #3b82f6; }
+.bench-bar-fill--explicit { background: #10b981; }
+
+.bench-summary {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+}
+
+.bench-summary strong {
+    color: var(--text-primary);
+}
+
+/* ---------- Tutorial ---------- */
+
+.tutorial-nav__item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-panel);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.tutorial-nav__item.is-active {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-dark));
+    color: #fff;
+    border-color: transparent;
+}
+
+.panel--tutorial h3 {
+    margin-top: 18px;
+    color: #93c5fd;
+}
+
+.panel--tutorial .formula-block {
+    background: var(--bg-panel-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-family: "Cascadia Code", Consolas, monospace;
+    font-size: 0.85rem;
+    margin: 8px 0;
+    color: #93c5fd;
+    overflow-x: auto;
+}
+
+/* ---------- Toast ---------- */
+
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 999;
+}
+
+.toast {
+    background: var(--bg-panel-alt);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--accent-danger);
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    box-shadow: var(--shadow-soft);
+    animation: fade-in 0.2s ease;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
