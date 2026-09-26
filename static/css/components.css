@@ -50,7 +50,6 @@
     filter: none;
 }
 
-/* ---------- Status pill (conexión con el motor) ---------- */
 
 .status-pill {
     display: inline-flex;
@@ -88,7 +87,6 @@
     50% { opacity: 0.35; }
 }
 
-/* ---------- Formularios ---------- */
 
 .field-group {
     margin-bottom: 14px;
@@ -162,7 +160,6 @@ input:focus, select:focus {
     margin-top: 8px;
 }
 
-/* ---------- Tarjetas de métricas (KPI) ---------- */
 
 .metrics-grid {
     display: grid;
@@ -207,7 +204,6 @@ input:focus, select:focus {
     color: var(--text-secondary);
 }
 
-/* ---------- Badges (alert level) ---------- */
 
 .badge {
     display: inline-block;
@@ -225,7 +221,6 @@ input:focus, select:focus {
 .badge--warning { color: #fcd34d; border-color: #b45309; background: rgba(245, 158, 11, 0.12); }
 .badge--danger { color: #fca5a5; border-color: #b91c1c; background: rgba(239, 68, 68, 0.12); }
 
-/* ---------- Progress bar (health score) ---------- */
 
 .progress-bar {
     width: 100%;
@@ -241,7 +236,6 @@ input:focus, select:focus {
     transition: width 0.4s ease;
 }
 
-/* ---------- Chart legend ---------- */
 
 .chart-legend {
     display: flex;
@@ -269,7 +263,6 @@ input:focus, select:focus {
 .legend-dot--telemetry { background: #f59e0b; }
 .legend-dot--threshold { background: #ef4444; }
 
-/* ---------- Tablas ---------- */
 
 .data-table {
     width: 100%;
@@ -295,7 +288,6 @@ input:focus, select:focus {
     padding: 6px;
 }
 
-/* ---------- Math panel ---------- */
 
 .math-summary {
     display: grid;
@@ -352,7 +344,6 @@ input:focus, select:focus {
     font-family: "Cascadia Code", Consolas, monospace;
 }
 
-/* ---------- Benchmark ---------- */
 
 .bench-bars {
     display: flex;
@@ -395,7 +386,6 @@ input:focus, select:focus {
     color: var(--text-primary);
 }
 
-/* ---------- Tutorial ---------- */
 
 .tutorial-nav__item {
     display: block;
@@ -434,7 +424,6 @@ input:focus, select:focus {
     overflow-x: auto;
 }
 
-/* ---------- Toast ---------- */
 
 .toast-container {
     position: fixed;
