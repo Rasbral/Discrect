@@ -1,0 +1,51 @@
+<h2 class="panel__title">⚙️ Parámetros del Modelo</h2>
+<div id="control-panel-error" style="color: var(--accent-danger); margin-bottom: 15px; font-weight: bold;" hidden></div>
+
+<label style="display: block; margin-top: 10px;">Orden de Recurrencia:</label>
+<select id="order-select" style="width: 100%; padding: 5px; margin-bottom: 15px; background: var(--bg-panel-alt); color: white;">
+    <option value="1">Orden 1</option>
+    <option value="2" selected>Orden 2</option>
+    <option value="3">Orden 3</option>
+</select>
+
+<label style="display: block;">Escenarios Sintéticos:</label>
+<div style="display: flex; gap: 5px; margin-bottom: 15px;">
+    <select id="preset-select" style="flex: 1; padding: 5px; background: var(--bg-panel-alt); color: white;">
+        <option value="">-- Predefinidos --</option>
+    </select>
+    <button id="btn-load-preset" style="cursor: pointer;">Cargar</button>
+</div>
+<button id="btn-random" style="width: 100%; margin-bottom: 20px; cursor: pointer;">🎲 Generar Aleatorio</button>
+
+<h3 style="font-size: 0.9rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 5px;">Coeficientes (c)</h3>
+<div id="coefficients-inputs" style="display: flex; gap: 5px; margin-bottom: 15px;"></div>
+
+<h3 style="font-size: 0.9rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 5px;">Condiciones Iniciales (a)</h3>
+<div id="initial-conditions-inputs" style="display: flex; gap: 5px; margin-bottom: 15px;"></div>
+
+<h3 style="font-size: 0.9rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 5px; margin-top: 20px;">Configuración</h3>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+    <div>
+        <label style="font-size: 0.8rem;">Semanas (n):</label>
+        <input type="number" id="n-terms-input" value="20" style="width: 100%; padding: 3px;">
+    </div>
+    <div>
+        <label style="font-size: 0.8rem;">Ruido:</label>
+        <input type="number" step="0.01" id="noise-level-input" value="0.035" style="width: 100%; padding: 3px;">
+    </div>
+    <div>
+        <label style="font-size: 0.8rem;">Repeticiones:</label>
+        <input type="number" id="repetitions-input" value="300" style="width: 100%; padding: 3px;">
+    </div>
+    <div>
+        <label style="font-size: 0.8rem;">Umbral Límite:</label>
+        <input type="number" id="capacity-threshold-input" value="1000" style="width: 100%; padding: 3px;">
+    </div>
+</div>
+
+<input type="hidden" id="metric-type-input" value="vCPU Cores">
+<input type="hidden" id="unit-input" value="cores">
+
+<button id="btn-simulate" style="width: 100%; padding: 12px; margin-top: 20px; background: var(--accent-blue); color: white; border: none; border-radius: var(--radius-sm); font-weight: bold; cursor: pointer;">
+    ▶ Ejecutar Simulación
+</button>
