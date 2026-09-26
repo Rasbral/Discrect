@@ -1,0 +1,35 @@
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 20px;">
+    <!-- Estado de Raíces -->
+    <div class="panel">
+        <span id="metric-regime-badge" style="float: right; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: var(--border-subtle);">--</span>
+        <p class="panel__subtitle" style="margin:0;">Comportamiento Límite</p>
+        <h2 id="metric-regime-value" style="font-size: 1.2rem; margin: 5px 0;">--</h2>
+        <p id="metric-dominant-root" style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;"></p>
+        <p id="metric-growth-value" style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;"></p>
+    </div>
+
+    <!-- Saturación -->
+    <div class="panel">
+        <p class="panel__subtitle" id="metric-capacity-label" style="margin:0;">Capacidad</p>
+        <h2 id="metric-capacity-value" style="font-size: 1.2rem; margin: 5px 0;">--</h2>
+        <p id="metric-capacity-hint" style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;"></p>
+    </div>
+
+    <!-- Oscilación Compleja -->
+    <div class="panel">
+        <p class="panel__subtitle" style="margin:0;">Oscilación (Raíz Compleja)</p>
+        <h2 id="metric-oscillation-value" style="font-size: 1.2rem; margin: 5px 0;">--</h2>
+        <p id="metric-oscillation-period" style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;"></p>
+    </div>
+
+    <!-- Salud e Igualdad -->
+    <div class="panel">
+        <p class="panel__subtitle" style="margin:0;">Precisión Algorítmica</p>
+        <h2 id="metric-validation-value" style="font-size: 1.2rem; margin: 5px 0;">--</h2>
+        <p id="metric-validation-hint" style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;"></p>
+        <div style="background: var(--bg-base); height: 4px; width: 100%; margin-top: 5px;">
+            <div id="metric-health-bar" style="background: var(--accent-success); height: 100%; width: 0%;"></div>
+        </div>
+        <p id="metric-health-value" hidden></p>
+    </div>
+</div>
