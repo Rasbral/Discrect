@@ -1,0 +1,32 @@
+<h2 class="panel__title"> Latencia (Microsegundos)</h2>
+<div style="margin-bottom: 20px;">
+    <p style="margin: 5px 0; font-size: 0.85rem;">Cálculo Recursivo: <span id="bench-rec-avg" style="float: right;">--</span></p>
+    <div style="background: var(--bg-panel-alt); height: 8px; border-radius: 4px; width: 100%; margin-bottom: 10px;">
+        <div id="bench-bar-recursive" style="background: var(--accent-warning); height: 100%; border-radius: 4px; width: 0%;"></div>
+    </div>
+    
+    <p style="margin: 5px 0; font-size: 0.85rem;">Cálculo Explícito: <span id="bench-exp-avg" style="float: right;">--</span></p>
+    <div style="background: var(--bg-panel-alt); height: 8px; border-radius: 4px; width: 100%;">
+        <div id="bench-bar-explicit" style="background: var(--accent-success); height: 100%; border-radius: 4px; width: 0%;"></div>
+    </div>
+</div>
+
+<div style="background: var(--bg-panel-alt); padding: 15px; border-radius: var(--radius-sm); margin-bottom: 20px; text-align: center;">
+    <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">Método más eficiente:</p>
+    <p id="bench-faster-method" style="margin: 5px 0; font-weight: bold; color: var(--accent-blue);">--</p>
+    <p style="margin: 0; font-size: 0.85rem;">Speedup Total: <strong id="bench-speedup">--</strong></p>
+    <p style="margin: 0; font-size: 0.85rem;" hidden>Speedup N: <strong id="bench-nth-speedup">--</strong></p>
+</div>
+
+<table border="1" style="width: 100%; border-collapse: collapse; text-align: right; font-size: 0.75rem; border-color: var(--border-subtle);">
+    <thead style="background: var(--bg-panel-alt);">
+        <tr><th style="text-align: left; padding: 5px;">Métrica (µs)</th><th>Recursivo</th><th>Explícito</th></tr>
+    </thead>
+    <tbody>
+        <tr><td style="text-align: left; padding: 4px;">Promedio</td><td id="bench-rec-avg-td"></td><td id="bench-exp-avg-td"></td></tr>
+        <tr><td style="text-align: left; padding: 4px;">Mínimo</td><td id="bench-rec-min-td"></td><td id="bench-exp-min-td"></td></tr>
+        <tr><td style="text-align: left; padding: 4px;">Máximo</td><td id="bench-rec-max-td"></td><td id="bench-exp-max-td"></td></tr>
+        <tr><td style="text-align: left; padding: 4px;">Desv. Est.</td><td id="bench-rec-std-td"></td><td id="bench-exp-std-td"></td></tr>
+        <tr><td style="text-align: left; padding: 4px; color:var(--text-secondary);">Big O</td><td id="bench-rec-complexity-td"></td><td id="bench-exp-complexity-td"></td></tr>
+    </tbody>
+</table>
