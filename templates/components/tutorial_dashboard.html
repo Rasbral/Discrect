@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tutorial - Matemática Discreta</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <h1 class="topbar__title">📚 Tema 04: Sucesiones Recursivas</h1>
+        <a href="/" style="color: var(--accent-blue); text-decoration: none; font-weight: bold;">← Volver al Simulador</a>
+    </header>
+    <main style="padding: 40px; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+        <div class="panel">
+            <h2>Justificación Teórica de la Rúbrica</h2>
+            <p>El núcleo de este proyecto resuelve la ecuación característica para encontrar la fórmula cerrada de forma automática.</p>
+            <ul>
+                <li><strong>Raíces Reales Distintas:</strong> La demanda se modela combinando exponenciales. Suelen causar divergencia si |r| > 1.</li>
+                <li><strong>Raíces Múltiples:</strong> Se multiplican por la variable <em>n</em> para evitar redundancia lineal.</li>
+                <li><strong>Raíces Complejas Conjugadas:</strong> Generan términos trigonométricos. El simulador detecta esto y alerta sobre <strong>oscilaciones</strong> en la carga del servidor (picos y valles periódicos).</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
